@@ -27,7 +27,7 @@ export default function Home() {
               an awesome one
             </span>
             <div className="flex items-center">
-              <Link href={"/candidate/jobs"}>
+              <Link href={"/company/jobs"}>
                 <Button className="uppercase rounded-3xl bg-white hover:bg-slate-300 text-black text-xl font-mono">
                   Hire your Developer
                 </Button>
