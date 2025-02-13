@@ -1,6 +1,6 @@
 "use client";
 
-import { Jobs } from "@/lib/constants";
+import { Jobs, QuestionsRelatedTONewJob } from "@/lib/constants";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -38,6 +38,7 @@ const page = () => {
   const id = pathname.split("/")[3];
   const Job = Jobs.filter((item) => item.id === id);
 
+
   const handleUpload = async () => {
     if (!file) return alert("Please select a file!");
 
@@ -56,7 +57,7 @@ const page = () => {
     }
   };
 
-  
+
 
   const form = useForm<z.infer<typeof formSchema>>({
       resolver: zodResolver(formSchema),
@@ -100,6 +101,7 @@ const page = () => {
       </div>
 
       <div className="flex justify-center items-center mt-5">
+        
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}

@@ -14,11 +14,12 @@ datasource db {
 }
 
 model JobDescription {
+  userId String? 
   id String @unique @default(uuid())
   jobTitle String 
   jobHook String
   CompanyName String
-  Salary Int 
+  Salary String 
   description String
   whatHasToBeDone String
   qualifications String

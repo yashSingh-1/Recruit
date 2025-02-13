@@ -13,6 +13,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { CreateJob } from "@/server/Creating";
 
 const formSchema = z.object({
   title: z.string().min(2, {
@@ -20,7 +23,7 @@ const formSchema = z.object({
   }),
   hook: z.string(),
   companyName: z.string(),
-  salary: z.number(),
+  salary: z.string(),
   jobDescription: z.string(),
   whatYoulldo: z.string(),
   qualificationsNeeded: z.string(),
@@ -29,13 +32,35 @@ const formSchema = z.object({
 });
 
 const page = () => {
+  const [userIdState, setUserStateID] = useState("");
+  const router = useRouter();
+
+  const generateUniqueId = () => {
+      return "user-" + Math.random().toString(36).substring(2, 9);
+    };
+  
+    function getUserId() {
+      let userId = localStorage.getItem("userId");
+      if (!userId) {
+        userId = generateUniqueId();
+        localStorage.setItem("userId", userId);
+        setUserStateID(userId);
+      }
+      setUserStateID(userId);
+      return userId;
+    }
+    useEffect(() => {
+      getUserId();
+    }, [userIdState]);
+
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: "",
       hook: "",
       companyName: "",
-      salary: 1,
+      salary: "",
       jobDescription: "",
       whatYoulldo: "",
       qualificationsNeeded: "",
@@ -43,17 +68,38 @@ const page = () => {
       location: "",
     },
   });
+  console.log("USerID", userIdState.toString())
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
+    const createdJob = await CreateJob({
+        userId: userIdState,
+        jobTitle: values.title,
+        jobHook: values.hook,
+        CompanyName: values.companyName,
+        Salary: values.salary,
+        description: values.jobDescription,
+        whatHasToBeDone: values.whatYoulldo,
+        qualifications: values.qualificationsNeeded,
+        Tags: values.tag,
+        location: values.location
+      }
+
+
+    )
+    if(createdJob){
+      router.replace("/company/jobs");
+    }
+    console.log("Created job", createdJob);
   }
 
   return (
     <div className="bg-gradient-to-r from-slate-950 via-gray-900 to-black px-5 min-h-screen flex flex-col justify-center items-center">
       <div className="text-white font-bold text-3xl">Create a new Job</div>
+      
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}

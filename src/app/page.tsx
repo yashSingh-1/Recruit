@@ -1,7 +1,30 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [userIdState, setUserStateID] = useState("");
+  const generateUniqueId = () => {
+    return "user-" + Math.random().toString(36).substring(2, 9);
+  };
+
+  function getUserId() {
+    let userId = localStorage.getItem("userId");
+    if (!userId) {
+      userId = generateUniqueId();
+      localStorage.setItem("userId", userId);
+      setUserStateID(userId);
+    }
+    setUserStateID(userId);
+    return userId;
+  }
+  useEffect(() => {
+    getUserId();
+  }, [userIdState]);
+
+  console.log(userIdState);
   return (
     <div>
       <div
