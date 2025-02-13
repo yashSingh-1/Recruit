@@ -62,3 +62,14 @@ export const FetchAllJobs = async () => {
   return allJobs;
 }
 
+export const FetchingAPerticularJob = async (jobUniquesID: string) => {
+  const perticularJob = await db.jobDescription.findUnique({
+    where: {
+      id: jobUniquesID
+    }
+  })
+
+  console.log("Perticular job", perticularJob)
+  return perticularJob;
+}
+
