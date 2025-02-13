@@ -12,3 +12,16 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model JobDescription {
+  id String @unique @default(uuid())
+  jobTitle String 
+  jobHook String
+  CompanyName String
+  Salary Int 
+  description String
+  whatHasToBeDone String
+  qualifications String
+  Tags String
+  location String
+}

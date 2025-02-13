@@ -121,3 +121,51 @@ export const Jobs = [
     }
   ]
   
+
+export const QuestionsRelatedTONewJob = [
+  {
+    name: "title",
+    lebel: "Job Title",
+    placeholder: "Job Title"
+  },
+  {
+    name: "hook",
+    lebel: "Job Hook",
+    placeholder: "Hook fot the job"
+  },
+  {
+    name: "companyName",
+    lebel: "Company Name",
+    placeholder: "Company Name"
+  },
+  {
+    name: "salary",
+    lebel: "Salary",
+    placeholder: "Job Title"
+  },
+  {
+    name: "jobDescription",
+    lebel: "Job Description",
+    placeholder: "Job Description"
+  },
+  {
+    name: "whatYoulldo",
+    lebel: "What has to be done!",
+    placeholder: "What has to be done!"
+  },
+  {
+    name: "qualificationsNeeded",
+    lebel: "Job Qualifications needed",
+    placeholder: "Job Qualifications needed"
+  },
+  {
+    name: "tag",
+    lebel: "Job Tag",
+    placeholder: "Job Tag. Ex: Remote or Full-Time"
+  },
+  {
+    name: "location",
+    lebel: "Job Location",
+    placeholder: "Job Location"
+  },
+]
