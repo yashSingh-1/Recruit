@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { CreateJob } from "@/server/Creating";
+import { CreateJob } from "@/server/PrismaServerActions";
 
 const formSchema = z.object({
   title: z.string().min(2, {

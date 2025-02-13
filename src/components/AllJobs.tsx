@@ -1,4 +1,4 @@
-import { FetchJobs } from "@/server/Creating";
+import { FetchJobs } from "@/server/PrismaServerActions";
 import React from "react";
 
 const AllJobs = async ({ userId }: { userId: string }) => {

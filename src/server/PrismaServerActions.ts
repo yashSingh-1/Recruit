@@ -55,3 +55,10 @@ export const FetchJobs = async (userId: string) => {
   console.log("Jobs from the server", jobs)
   return jobs;
 }
+
+export const FetchAllJobs = async () => {
+  const allJobs = await db.jobDescription.findMany();
+  console.log("All Josb from the server", allJobs)
+  return allJobs;
+}
+
