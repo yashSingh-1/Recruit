@@ -14,15 +14,32 @@ datasource db {
 }
 
 model JobDescription {
-  userId String? 
-  id String @unique @default(uuid())
-  jobTitle String 
-  jobHook String
-  CompanyName String
-  Salary String 
-  description String
+  userId          String?
+  id              String           @unique @default(uuid())
+  jobTitle        String
+  jobHook         String
+  CompanyName     String
+  Salary          String
+  description     String
   whatHasToBeDone String
-  qualifications String
-  Tags String
-  location String
+  qualifications  String
+  Tags            String
+  location        String
+  applicantsId    JobApplication[]
+}
+
+model JobApplication {
+  userWhoHasAppliedId   String
+  id                    String         @unique @default(uuid())
+  candidateName         String
+  resume                String
+  coverLetter           String
+  Age                   String
+  WhyDoYouWannaWorkHere String
+  UniqueThingsYouGot    String
+  CGPA                  String
+  WillingTORelocate     String
+  location              String
+  jobID                 JobDescription @relation(fields: [jobAppliedTo], references: [id])
+  jobAppliedTo          String
 }

@@ -42,34 +42,80 @@ export const CreateJob = async ({
     },
   });
 
-   return createdJob;
+  return createdJob;
 };
-
 
 export const FetchJobs = async (userId: string) => {
   const jobs = await db.jobDescription.findMany({
     where: {
-      userId: userId
-    }
-  })
-  console.log("Jobs from the server", jobs)
+      userId: userId,
+    },
+  });
+  console.log("Jobs from the server", jobs);
   return jobs;
-}
+};
 
 export const FetchAllJobs = async () => {
   const allJobs = await db.jobDescription.findMany();
-  console.log("All Josb from the server", allJobs)
+  console.log("All Josb from the server", allJobs);
   return allJobs;
-}
+};
 
 export const FetchingAPerticularJob = async (jobUniquesID: string) => {
   const perticularJob = await db.jobDescription.findUnique({
     where: {
-      id: jobUniquesID
-    }
-  })
+      id: jobUniquesID,
+    },
+  });
 
-  console.log("Perticular job", perticularJob)
+  console.log("Perticular job", perticularJob);
   return perticularJob;
-}
+};
 
+// Job applications
+
+type JobAppProps = {
+  userWhoHasAppliedId: string;
+  candidateName: string;
+  resume: string;
+  coverLetter: string;
+  Age: string;
+  WhyDoYouWannaWorkHere: string;
+  UniqueThingsYouGot: string;
+  CGPA: string;
+  WillingTORelocate: string;
+  location: string;
+  jobAppliedTo: string;
+};
+
+export const CreatingAJobApplication = async ({
+  userWhoHasAppliedId,
+  candidateName,
+  resume,
+  coverLetter,
+  Age,
+  WhyDoYouWannaWorkHere,
+  UniqueThingsYouGot,
+  CGPA,
+  WillingTORelocate,
+  location,
+  jobAppliedTo,
+}: JobAppProps) => {
+  const createdApplication = await db.jobApplication.create({
+    data: {
+      userWhoHasAppliedId,
+      candidateName,
+      resume,
+      coverLetter,
+      Age,
+      WhyDoYouWannaWorkHere,
+      UniqueThingsYouGot,
+      CGPA,
+      WillingTORelocate,
+      location,
+      jobAppliedTo,
+    },
+  });
+
+  return createdApplication;
+};
