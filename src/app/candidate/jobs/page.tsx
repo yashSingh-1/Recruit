@@ -1,6 +1,5 @@
 import JobCard from "@/components/JobCard";
 import Sidebar from "@/components/Sidebar";
-import { Jobs } from "@/lib/constants";
 import { FetchAllJobs } from "@/server/PrismaServerActions";
 import React from "react";
 

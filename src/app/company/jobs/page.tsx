@@ -6,9 +6,20 @@ import { FetchJobs } from "@/server/PrismaServerActions";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
+interface Job {
+  id: string;
+  jobTitle: string;
+  jobHook: string;
+  CompanyName: string;
+  Salary: string;
+  description: string;
+  Tags: string;
+}
+
 const Page = () => {
   const [userId, setUserId] = useState<string | null>(null);
-  const [jobs, setJobs] = useState<any[]>([]);
+
+  const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   // Function to generate and retrieve user ID

@@ -1,14 +1,28 @@
+
 "use client";
 import { FetchApplicantsFromTheJobId } from "@/server/PrismaServerActions";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
+interface JobApplication {
+  userWhoHasAppliedId: string;
+  id: string;
+  candidateName: string;
+  resume: string;
+  coverLetter: string;
+  Age: string;
+  WhyDoYouWannaWorkHere: string;
+  UniqueThingsYouGot: string;
+  CGPA: string;
+  WillingTORelocate: string;
+  location: string;
+}
+
 const Page = () => {
   const pathname = usePathname();
   const jobId = pathname.split("/")[3]; // Extract jobId from URL
   console.log("Job ID:", jobId);
-
-  const [applicants, setApplicants] = useState<any[]>([]); // Ensure it's an array
+  const [applicants, setApplicants] = useState<JobApplication[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -58,7 +72,6 @@ const Page = () => {
                 fill="currentFill"
               />
             </svg>
-            <span className="sr-only">Loading...</span>
           </div>
           <p className="text-white text-3xl font-mono">Loading Applicants...</p>
         </div>

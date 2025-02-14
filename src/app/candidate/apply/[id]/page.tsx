@@ -1,6 +1,6 @@
 "use client";
 
-import { Jobs, QuestionsRelatedTONewJob } from "@/lib/constants";
+import { Jobs } from "@/lib/constants";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -32,7 +32,7 @@ const formSchema = z.object({
   location: z.string(),
 });
 
-const page = () => {
+const Page = () => {
   const pathname = usePathname();
   const id = pathname.split("/")[3];
   const Job = Jobs.filter((item) => item.id === id);
@@ -58,7 +58,7 @@ const page = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    let userId = localStorage.getItem("userId");
+    const userId = localStorage.getItem("userId");
     try {
       setLoading(true)
       const createApplication = await CreatingAJobApplication({
@@ -280,4 +280,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

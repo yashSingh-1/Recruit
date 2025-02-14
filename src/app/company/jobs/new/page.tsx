@@ -31,7 +31,7 @@ const formSchema = z.object({
   location: z.string(),
 });
 
-const page = () => {
+const Page = () => {
   const [userIdState, setUserStateID] = useState("");
   const router = useRouter();
 
@@ -49,9 +49,10 @@ const page = () => {
       setUserStateID(userId);
       return userId;
     }
+
     useEffect(() => {
       getUserId();
-    }, [userIdState]);
+    }, []);
 
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -244,4 +245,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

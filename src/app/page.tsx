@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function Home() {
+export default function Page() {
   const [userIdState, setUserStateID] = useState("");
   const generateUniqueId = () => {
     return "user-" + Math.random().toString(36).substring(2, 9);
@@ -20,6 +20,7 @@ export default function Home() {
     setUserStateID(userId);
     return userId;
   }
+  
   useEffect(() => {
     getUserId();
   }, [userIdState]);
