@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Job Posting App 🏢🚀
 
-## Getting Started
+This is a **Next.js** application that allows users to create and view job posts. The app fetches job listings from the backend and displays them in a modern, responsive UI.
 
-First, run the development server:
+## 🚀 Features
+
+- ✅ Create and list job postings  
+- ✅ Fetch job data dynamically  
+- ✅ Stores a unique user ID in `localStorage`  
+- ✅ Responsive UI with Tailwind CSS  
+- ✅ Optimized for performance  
+
+---
+
+## 🛠 Setup Instructions  
+
+### 1️⃣ Clone the Repository  
+To get started, clone this repository to your local machine using Git:  
 
 ```bash
+git clone https://github.com/your-username/job-posting-app.git
+cd recruit
+
+
+npm install
+
+DATABASE_URL=your_database_url_here
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+/recruit
+│── /components       # Reusable UI components
+│── /src/app          # Next.js pages (Routing)
+│── /server           # Server-side logic (Prisma actions)
+│── /public           # Static assets
+│── .env.local        # Environment variables
+│── package.json      # Project dependencies
+│── README.md         # Documentation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+⚙️ How It Works
+🔹 User Identification
+When a user visits the page, the app generates a unique userId and stores it in localStorage.
+If the user already has an ID, it retrieves it from storage.
+🔹 Fetching Jobs
+The FetchJobs(userId) function retrieves job posts created by the user.
+If no jobs exist, a message is displayed.
+🔹 Posting Jobs
+Users can create a new job post via the /company/jobs/new page.
+🔹 UI Components
+The job listings are displayed using the <JobPosts /> component.
+A button allows users to create new job postings.
+🛠 Technologies Used
+This project is built with the following technologies:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next.js – React framework for fast, scalable applications
+TypeScript (optional) – For type safety
+Prisma – Database ORM
+Tailwind CSS – For styling
+LocalStorage – To store user data
+API Routes – For fetching job data

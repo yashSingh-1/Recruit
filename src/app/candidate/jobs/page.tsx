@@ -9,7 +9,7 @@ const page = async () => {
   return (
     <div className="flex bg-gradient-to-r from-blue-100 via-white to-red-200">
       <Sidebar />
-      <div className="grid grid-cols-1 md:grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 h-fit">
       {allJobs.map((item) => (
         <JobCard
         key={item.id}
