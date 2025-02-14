@@ -1,6 +1,6 @@
 "use client";
 
-import JobCard from "@/components/JobCard";
+import JobPosts from "@/components/JobPosts";
 import { Button } from "@/components/ui/button";
 import { FetchJobs } from "@/server/PrismaServerActions";
 import Link from "next/link";
@@ -87,7 +87,7 @@ const Page = () => {
                 key={job.id}
                 className="md:w-1/2 w-full"
               >
-                <JobCard
+                <JobPosts
                   key={job.id}
                   title={job.jobTitle}
                   hook={job.jobHook}

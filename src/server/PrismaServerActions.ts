@@ -116,6 +116,23 @@ export const CreatingAJobApplication = async ({
       jobAppliedTo,
     },
   });
-
+  console.log("Application from the server", createdApplication)
   return createdApplication;
 };
+
+export const FetchApplicantsFromTheJobId = async (jobId: string) => {
+  try {
+    const jobExists = await db.jobDescription.findUnique({
+      where: {
+        id: jobId
+      },
+      select: {
+        applicantsId: true
+      }
+    })
+    console.log(jobExists, "fromthe server of")
+    return jobExists;
+  } catch (error) {
+    console.log(error)
+  }
+}
