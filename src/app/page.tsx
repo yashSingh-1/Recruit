@@ -20,7 +20,7 @@ export default function Page() {
     setUserStateID(userId);
     return userId;
   }
-  
+
   useEffect(() => {
     getUserId();
   }, [userIdState]);
@@ -32,7 +32,7 @@ export default function Page() {
         className="bg-gray-950 h-screen text-white flex flex-col justify-between"
         id="hire_others"
       >
-        <div className="grid grid-cols-2 h-[350px] ">
+        <div className="grid grid-cols-2 h-[360px] ">
           <div className="flex justify-center items-center p-4">
             <span className="uppercase font-bold font-mono text-6xl">
               The magic devs
